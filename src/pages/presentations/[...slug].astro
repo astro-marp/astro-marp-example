@@ -30,3 +30,7 @@ const { Content } = await presentation.render();
   </div>
 </body>
 </html>
+
+// if you enabled tailwind, you can directly use <Content />, since tailwind will inject tailwind/base.css, but our marp result is complete html file, this will create conflicts
+//
+//<Content />
