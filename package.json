@@ -15,7 +15,8 @@
   "dependencies": {
     "astro-marp": "git+https://github.com/astro-marp/astro-marp.git",
     "@marp-team/marp-core": "^4.1.0",
-    "astro": "^5.13.7"
+    "astro": "^5.13.7",
+    "astro-typst": "^0.12.1"
   },
   "devDependencies": {
     "@marp-team/marp-cli": "^4.2.3",

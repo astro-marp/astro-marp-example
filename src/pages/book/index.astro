@@ -1,0 +1,209 @@
+---
+import { getCollection } from 'astro:content';
+
+const bookEntries = await getCollection('book');
+const sortedBooks = bookEntries.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Book Collection</title>
+    <meta name="description" content="Browse our collection of Typst documents and educational materials" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #f8fafc;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #e2e8f0;
+      }
+      .title {
+        color: #1a202c;
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem 0;
+      }
+      .subtitle {
+        color: #718096;
+        font-size: 1.25rem;
+        margin: 0;
+      }
+      .books-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      .book-card {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #e2e8f0;
+      }
+      .book-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        border-color: #4299e1;
+      }
+      .book-title {
+        color: #2d3748;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem 0;
+        text-decoration: none;
+      }
+      .book-title:hover {
+        color: #4299e1;
+      }
+      .book-description {
+        color: #4a5568;
+        margin: 0 0 1rem 0;
+        font-size: 0.95rem;
+      }
+      .book-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .book-author {
+        color: #718096;
+        font-size: 0.875rem;
+      }
+      .book-date {
+        color: #a0aec0;
+        font-size: 0.875rem;
+      }
+      .category-badge {
+        background-color: #4299e1;
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      .read-link {
+        color: #4299e1;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.875rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      .read-link:hover {
+        text-decoration: underline;
+      }
+      .navigation {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #e2e8f0;
+      }
+      .nav-link {
+        color: #4299e1;
+        text-decoration: none;
+        font-weight: 500;
+        margin: 0 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      .nav-link:hover {
+        text-decoration: underline;
+      }
+      .stats {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2d3748;
+        display: block;
+      }
+      .stat-label {
+        font-size: 0.875rem;
+        color: #718096;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <h1 class="title">📚 Book Collection</h1>
+        <p class="subtitle">Educational materials and documentation written in Typst</p>
+      </header>
+
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">{sortedBooks.length}</span>
+          <span class="stat-label">Documents</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1</span>
+          <span class="stat-label">Category (Typst)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{new Set(sortedBooks.map(book => book.data.author)).size}</span>
+          <span class="stat-label">Authors</span>
+        </div>
+      </div>
+
+      <div class="books-grid">
+        {sortedBooks.map((book) => (
+          <article class="book-card">
+            <h2>
+              <a href={`/book/${book.slug}`} class="book-title">
+                {book.data.title}
+              </a>
+            </h2>
+            <p class="book-description">{book.data.desc || 'No description available'}</p>
+            <div class="book-meta">
+              <span class="book-author">📝 {book.data.author || 'Anonymous'}</span>
+              <span class="book-date">📅 {new Date(book.data.date).toLocaleDateString()}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="category-badge">{book.data.category}</span>
+              <a href={`/book/${book.slug}`} class="read-link">
+                Read document →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <nav class="navigation">
+        <a href="/" class="nav-link">🏠 Home</a>
+        <a href="/blog" class="nav-link">📝 Blog Posts</a>
+        <a href="/presentations" class="nav-link">🎯 Presentations</a>
+      </nav>
+    </main>
+  </body>
+</html>
