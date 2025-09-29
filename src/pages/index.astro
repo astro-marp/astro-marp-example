@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const presentations = await getCollection('presentation');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro-Marp Test Project</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .collection {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        .collection h2 {
+            color: #2d3748;
+            margin-top: 0;
+        }
+        .item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 4px;
+        }
+        .item h3 {
+            margin: 0 0 0.5rem 0;
+        }
+        .item h3 a {
+            text-decoration: none;
+            color: #2b6cb0;
+        }
+        .item h3 a:hover {
+            text-decoration: underline;
+        }
+        .meta {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        .nav {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .nav a {
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            background: #4299e1;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .nav a:hover {
+            background: #3182ce;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Astro-Marp Test Project</h1>
+
+    <p>Welcome to our test environment for the <strong>astro-marp</strong> integration!
+    This project demonstrates how Astro can seamlessly work with Marp presentations
+    alongside traditional blog content.</p>
+
+    <div class="nav">
+        <a href="/blog">View All Posts</a>
+        <a href="/presentations">View All Presentations</a>
+    </div>
+
+    <div class="collection">
+        <h2>📝 Recent Blog Posts</h2>
+        {posts.map((post) => (
+            <div class="item">
+                <h3><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
+                <p>{post.data.description}</p>
+                <div class="meta">
+                    By {post.data.author} • {post.data.publishDate}
+                    {post.data.tags && (
+                        <span> • Tags: {post.data.tags.join(', ')}</span>
+                    )}
+                </div>
+            </div>
+        ))}
+    </div>
+
+    <div class="collection">
+        <h2>🎯 Interactive Presentations</h2>
+        {presentations.map((presentation) => (
+            <div class="item">
+                <h3><a href={`/presentations/${presentation.slug}`}>{presentation.data.title}</a></h3>
+                <p>{presentation.data.description}</p>
+                <div class="meta">
+                    {presentation.data.author && `By ${presentation.data.author}`}
+                    {presentation.data.theme && ` • Theme: ${presentation.data.theme}`}
+                </div>
+            </div>
+        ))}
+    </div>
+
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
+        <p>Testing Astro + Marp Integration • <a href="https://github.com/withastro/astro" style="color: #4299e1;">Astro</a> + <a href="https://marp.app/" style="color: #4299e1;">Marp</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts - Astro-Marp Test</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .item {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #4299e1;
+        }
+        .item h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .item h2 a {
+            text-decoration: none;
+            color: #2b6cb0;
+        }
+        .item h2 a:hover {
+            text-decoration: underline;
+        }
+        .meta {
+            color: #718096;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        .nav {
+            margin: 2rem 0;
+        }
+        .nav a {
+            color: #4299e1;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .tags {
+            margin: 1rem 0;
+        }
+        .tag {
+            display: inline-block;
+            background: #edf2f7;
+            color: #2d3748;
+            padding: 0.25rem 0.5rem;
+            margin: 0.25rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">← Back to Home</a> | <a href="/presentations">All Presentations</a>
+    </div>
+
+    <h1>📝 All Blog Posts</h1>
+
+    <div>
+        {posts.map((post) => (
+            <div class="item">
+                <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                <p>{post.data.description}</p>
+                <div class="meta">
+                    By {post.data.author} • {post.data.publishDate}
+                </div>
+                {post.data.tags && (
+                    <div class="tags">
+                        {post.data.tags.map((tag) => (
+                            <span class="tag">{tag}</span>
+                        ))}
+                    </div>
+                )}
+            </div>
+        ))}
+    </div>
+
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
+        <a href="/">← Back to Home</a> | <a href="/presentations">All Presentations</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+
+const presentations = await getCollection('presentation');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Presentations</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .item {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            background: #f0f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+        }
+        .item h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .item h2 a {
+            text-decoration: none;
+            color: #0c4a6e;
+        }
+        .item h2 a:hover {
+            text-decoration: underline;
+        }
+        .meta {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        .nav {
+            margin: 2rem 0;
+        }
+        .nav a {
+            color: #0ea5e9;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .presentation-badge {
+            display: inline-block;
+            background: #0ea5e9;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">← Back to Home</a> | <a href="/blog">All Posts</a>
+    </div>
+
+    <h1>🎯 All Presentations</h1>
+
+    <p>Interactive Marp presentations with slide navigation, themes, and integrated content.</p>
+
+    <div>
+        {presentations.map((presentation) => (
+            <div class="item">
+                <h2><a href={`/presentations/${presentation.slug}`}>{presentation.data.title}</a></h2>
+                <p>{presentation.data.description}</p>
+                <div class="meta">
+                    {presentation.data.author && `By ${presentation.data.author}`}
+                </div>
+            </div>
+        ))}
+    </div>
+
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; text-align: center; color: #718096;">
+        <a href="/">← Back to Home</a> | <a href="/blog">All Posts</a>
+    </footer>
+</body>
+</html>
