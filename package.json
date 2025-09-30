@@ -13,9 +13,9 @@
     "test:e2e:debug": "playwright test --debug"
   },
   "dependencies": {
-    "astro-marp": "git+https://github.com/astro-marp/astro-marp.git",
     "@marp-team/marp-core": "^4.1.0",
     "astro": "^5.13.7",
+    "astro-marp": "github:astro-marp/astro-marp",
     "astro-typst": "^0.12.1"
   },
   "devDependencies": {

@@ -15,8 +15,8 @@ importers:
         specifier: ^5.13.7
         version: 5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2)
       astro-marp:
-        specifier: git+https://github.com/astro-marp/astro-marp.git
-        version: git+https://git@github.com:astro-marp/astro-marp.git#f8aa7037252cf655909662a7dcc7bc60468a95f0(astro@5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2))(typescript@5.9.2)
+        specifier: github:astro-marp/astro-marp
+        version: git+https://git@github.com:astro-marp/astro-marp.git#152842d6fe6574bb1c340ed949a548cc120f642d(astro@5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2))(typescript@5.9.2)
       astro-typst:
         specifier: ^0.12.1
         version: 0.12.1(@myriaddreamin/typst-ts-node-compiler@0.6.1-rc3)(@myriaddreamin/typst-ts-renderer@0.6.1-rc3)(@myriaddreamin/typst.ts@0.6.1-rc3(@myriaddreamin/typst-ts-renderer@0.6.1-rc3))(astro@5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2))(cheerio@1.1.2)(rollup@4.52.3)
@@ -764,12 +764,12 @@ packages:
     peerDependencies:
       astro: ^4.14.0 || ^5.0.0
 
-  astro-marp@git+https://git@github.com:astro-marp/astro-marp.git#f8aa7037252cf655909662a7dcc7bc60468a95f0:
-    resolution: {commit: f8aa7037252cf655909662a7dcc7bc60468a95f0, repo: git@github.com:astro-marp/astro-marp.git, type: git}
+  astro-marp@git+https://git@github.com:astro-marp/astro-marp.git#152842d6fe6574bb1c340ed949a548cc120f642d:
+    resolution: {commit: 152842d6fe6574bb1c340ed949a548cc120f642d, repo: git@github.com:astro-marp/astro-marp.git, type: git}
     version: 0.1.0
     engines: {node: '>=22.0.0'}
     peerDependencies:
-      astro: ^5.13.0
+      astro: ^5.14.0
 
   astro-typst@0.12.1:
     resolution: {integrity: sha512-ELnhOpvcne77S+ny+RFQr4dbGzT5EnaOkgXT8Qmd3OVWN72Zc44T0SO/cKzhSo1EmjW7okx850rWwlfu3YdSUA==}
@@ -2986,7 +2986,7 @@ snapshots:
       astro: 5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2)
       pathe: 1.1.2
 
-  astro-marp@git+https://git@github.com:astro-marp/astro-marp.git#f8aa7037252cf655909662a7dcc7bc60468a95f0(astro@5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2))(typescript@5.9.2):
+  astro-marp@git+https://git@github.com:astro-marp/astro-marp.git#152842d6fe6574bb1c340ed949a548cc120f642d(astro@5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2))(typescript@5.9.2):
     dependencies:
       '@marp-team/marp-cli': 4.2.3(typescript@5.9.2)
       astro: 5.14.1(@types/node@24.5.2)(rollup@4.52.3)(typescript@5.9.2)
