@@ -1,43 +1,117 @@
-# Astro Starter Kit: Minimal
+# Test Project - Astro Marp & Typst Integration
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A comprehensive test project demonstrating the integration of **[astro-marp](https://github.com/astro-marp/astro-marp)** and **[astro-typst](https://github.com/OverflowCat/astro-typst)** for creating presentations, books, and blog content in a single Astro application.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Project Overview
 
-## 🚀 Project Structure
+This project showcases three different content types working together:
 
-Inside of your Astro project, you'll see the following folders and files:
+- **📊 Presentations** - Interactive slide decks using Marp (Markdown Presentation Ecosystem)
+- **📚 Books** - Professional documents using Typst typesetting system
+- **📝 Blog** - Standard Markdown blog posts
+
+## 🏗 Project Structure
 
 ```text
-/
-├── public/
+astro-marp-example/
 ├── src/
+│   ├── content/
+│   │   ├── presentation/         # Marp presentations (.marp)
+│   │   │   └── macroeconomics.marp
+│   │   ├── book/                # Typst documents (.typ)
+│   │   │   └── introduction-to-typst.typ
+│   │   ├── blog/                # Markdown blog posts (.md)
+│   │   │   └── post-2024-11-14.md
+│   │   └── config.ts            # Content collection schemas
 │   └── pages/
-│       └── index.astro
+│       ├── presentations/       # Dynamic routes for presentations
+│       │   ├── [...slug].astro
+│       │   └── index.astro
+│       ├── book/               # Dynamic routes for books
+│       │   ├── [...slug].astro
+│       │   └── index.astro
+│       ├── blog/               # Dynamic routes for blog
+│       │   ├── [...slug].astro
+│       │   └── index.astro
+│       └── index.astro         # Homepage
+├── astro.config.mjs            # Astro configuration with integrations
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🔌 Integrations
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Astro-Marp (Presentations)
+- Astro-Typst (Books)
+- markdown
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 📋 Content Collection Schemas
+
+### Presentation Schema
+```typescript
+{
+  title: string;
+  description: string;
+  author: string;
+  marp: boolean;
+  keywords?: string;
+  url?: string;
+  image?: string;
+  theme?: string;
+  updatedDate?: Date;
+}
+```
+
+### Book Schema
+```typescript
+{
+  title: string;
+  author?: string;
+  desc?: any;
+  date: any;
+}
+```
+
+### Blog Schema
+```typescript
+{
+  title: string;
+  description: string;
+}
+```
+
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `pnpm install`          | Installs dependencies                            |
+| `pnpm dev`          | Starts local dev server at `localhost:4321`     |
+| `pnpm build`        | Build your production site to `./dist/`         |
 
-## 👀 Want to learn more?
+## 🌐 Available Routes
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Presentations
+- `/presentations/` - List all presentations
+- `/presentations/macroeconomics/` - Chinese macroeconomics presentation
+
+### Books
+- `/book/` - List all books
+- `/book/introduction-to-typst/` - Typst tutorial document
+
+### Blog
+- `/blog/` - List all blog posts
+- `/blog/post-2024-11-14/` - Sample blog post
+
+
+## 🎯 Use Cases
+
+This test project demonstrates real-world scenarios:
+
+1. **Academic/Educational**: Complex presentations with diagrams and mathematical content
+2. **Professional**: Multi-language business presentations with charts
+3. **Publishing**: Technical documentation with professional typesetting
+4. **Blogging**: Standard content management alongside specialized formats
+
+Perfect for testing the integration compatibility and showcasing the full capabilities of both astro-marp and astro-typst working together in a single project.
