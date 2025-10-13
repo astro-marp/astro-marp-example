@@ -14,12 +14,12 @@
   },
   "dependencies": {
     "@marp-team/marp-core": "^4.1.0",
-    "astro": "^5.13.7",
+    "astro": "^5.14.4",
     "astro-marp": "github:astro-marp/astro-marp",
     "astro-typst": "^0.12.1"
   },
   "devDependencies": {
     "@marp-team/marp-cli": "^4.2.3",
-    "@playwright/test": "^1.55.0"
+    "@playwright/test": "^1.56.0"
   }
 }

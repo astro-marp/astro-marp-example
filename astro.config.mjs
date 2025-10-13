@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import marp from 'astro-marp';
+import { marp } from 'astro-marp';
 import { typst } from 'astro-typst';
 
 // https://astro.build/config
