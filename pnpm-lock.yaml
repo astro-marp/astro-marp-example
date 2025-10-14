@@ -16,7 +16,7 @@ importers:
         version: 5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2)
       astro-marp:
         specifier: github:astro-marp/astro-marp
-        version: https://codeload.github.com/astro-marp/astro-marp/tar.gz/024d47edc66707fe45a171e957632cbcbce380b2(astro@5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2))(typescript@5.9.2)
+        version: https://codeload.github.com/astro-marp/astro-marp/tar.gz/d1160b75d37b017834a0e8b224b1f3421f89a0f2(astro@5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2))(typescript@5.9.2)
       astro-typst:
         specifier: ^0.12.1
         version: 0.12.1(@myriaddreamin/typst-ts-node-compiler@0.6.1-rc3)(@myriaddreamin/typst-ts-renderer@0.6.1-rc3)(@myriaddreamin/typst.ts@0.6.1-rc3(@myriaddreamin/typst-ts-renderer@0.6.1-rc3))(astro@5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2))(cheerio@1.1.2)(rollup@4.52.4)
@@ -870,8 +870,8 @@ packages:
     peerDependencies:
       astro: ^4.14.0 || ^5.0.0
 
-  astro-marp@https://codeload.github.com/astro-marp/astro-marp/tar.gz/024d47edc66707fe45a171e957632cbcbce380b2:
-    resolution: {tarball: https://codeload.github.com/astro-marp/astro-marp/tar.gz/024d47edc66707fe45a171e957632cbcbce380b2}
+  astro-marp@https://codeload.github.com/astro-marp/astro-marp/tar.gz/d1160b75d37b017834a0e8b224b1f3421f89a0f2:
+    resolution: {tarball: https://codeload.github.com/astro-marp/astro-marp/tar.gz/d1160b75d37b017834a0e8b224b1f3421f89a0f2}
     version: 0.1.0
     engines: {node: '>=22.0.0'}
     peerDependencies:
@@ -3163,7 +3163,7 @@ snapshots:
       astro: 5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2)
       pathe: 1.1.2
 
-  astro-marp@https://codeload.github.com/astro-marp/astro-marp/tar.gz/024d47edc66707fe45a171e957632cbcbce380b2(astro@5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2))(typescript@5.9.2):
+  astro-marp@https://codeload.github.com/astro-marp/astro-marp/tar.gz/d1160b75d37b017834a0e8b224b1f3421f89a0f2(astro@5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2))(typescript@5.9.2):
     dependencies:
       '@marp-team/marp-cli': 4.2.3(typescript@5.9.2)
       astro: 5.14.4(@types/node@24.7.2)(rollup@4.52.4)(typescript@5.9.2)
