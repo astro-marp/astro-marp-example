@@ -332,7 +332,7 @@ _class: lead
 <!-- _header: \ ***宏观经济学*** *利率* *通货膨胀* *美联储* **全球经济分析**-->
 <!-- _class: navbar  bq-blue fixedtitleA  -->
 > 主要经济指标
-<div class="mermaid">
+```mermaid
 %%{init: {'theme':'neutral'}}%%
 block-beta
   columns 1
@@ -368,7 +368,7 @@ block-beta
     C12("最低工资")
     C13("...")
   end
-</div>
+```
 
 ## 全球经济分析
 <!-- _header: \ ***宏观经济学*** *利率* *通货膨胀* *美联储* **全球经济分析**-->
